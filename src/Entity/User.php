@@ -30,6 +30,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\Column(type: 'string', length: 180, nullable: true)]
+    private ?string $name = null;
+
+    #[ORM\Column(type: 'string', length: 180, nullable: true)]
+    private ?string $address = null;
+
+    #[ORM\Column(type: 'string', length: 180, nullable: true)]
+    private ?string $house_number = null;
+
+    #[ORM\Column(type: 'string', length: 180, nullable: true)]
+    private ?string $city = null;
+
+    #[ORM\Column(type: 'string', length: 180, nullable: true)]
+    private ?string $post_code = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -99,6 +114,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): static
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): static
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): static
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getHouseNumber(): ?string
+    {
+        return $this->house_number;
+    }
+
+    public function setHouseNumber(string $houseNumber): static
+    {
+        $this->house_number = $houseNumber;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): static
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getPostCode(): ?string
+    {
+        return $this->post_code;
+    }
+
+    public function setPostCode(string $postCode): static
+    {
+        $this->post_code = $postCode;
 
         return $this;
     }

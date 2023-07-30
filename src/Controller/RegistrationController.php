@@ -14,15 +14,6 @@ use App\Entity\User;
 
 class RegistrationController extends AbstractController
 {
-    // #[Route('/registration', name: 'app_registration')]
-    // public function index(): JsonResponse
-    // {
-    //     return $this->json([
-    //         'message' => 'Welcome to your new controller!',
-    //         'path' => 'src/Controller/RegistrationController.php',
-    //     ]);
-    // }
-
     /**
      * @Route("/api", name="api_")
      */
@@ -37,6 +28,7 @@ class RegistrationController extends AbstractController
             $em = $doctrine->getManager();
             $decoded = json_decode($request->getContent());
             $email = $decoded->email;
+            $name = $decoded->name;
     
             $plaintextPassword = $decoded->password;
       
@@ -47,6 +39,7 @@ class RegistrationController extends AbstractController
             );
             $user->setPassword($hashedPassword);
             $user->setEmail($email);
+            $user->setName($name);
             $user->setUsername($email);
             $em->persist($user);
             $em->flush();
